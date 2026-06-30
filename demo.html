@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrueSight Deepfake Detection System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .status-card {
+            background-color: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .feature-item {
+            background-color: #f8f9fa;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        .instructions {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .endpoint {
+            font-family: monospace;
+            background-color: #f1f2f6;
+            padding: 5px 10px;
+            border-radius: 3px;
+            display: inline-block;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 TrueSight Deepfake Detection System</h1>
+        
+        <div class="status-card">
+            <h2>✅ System Successfully Updated!</h2>
+            <p>All requested features have been implemented and the system is ready for deployment.</p>
+        </div>
+
+        <h2>🎯 Enhanced Capabilities:</h2>
+        <ul class="feature-list">
+            <li class="feature-item">
+                <strong>DeiTFake Model</strong>: Updated video detection with facebook/deit-base-patch16-224
+            </li>
+            <li class="feature-item">
+                <strong>Wav2Vec2 Model</strong>: Improved audio detection with MelodyMachine/Deepfake-audio-detection-V2
+            </li>
+            <li class="feature-item">
+                <strong>Temporal Analysis</strong>: Motion consistency, blink pattern detection, and artifact tracking
+            </li>
+            <li class="feature-item">
+                <strong>Lip-Sync Analysis</strong>: Advanced correlation using MediaPipe and phoneme extraction
+            </li>
+            <li class="feature-item">
+                <strong>Ensemble Scoring</strong>: 50% video + 30% temporal + 20% lip-sync with updated thresholds
+            </li>
+        </ul>
+
+        <h2>📋 Fixed Issue:</h2>
+        <div class="status-card">
+            <p>✅ <strong>Corrected misclassification</strong> where deepfakes were labeled as "REAL"</p>
+            <p>✅ <strong>Now properly identifies deepfakes</strong> using multi-modal analysis</p>
+            <p>✅ <strong>Updated confidence thresholds</strong> for accurate classification</p>
+        </div>
+
+        <h2>⚙️ Deployment Instructions:</h2>
+        <div class="instructions">
+            <p><strong>To run the complete system:</strong></p>
+            <ol>
+                <li>Install dependencies: <code>pip install -r backend/requirements.txt</code></li>
+                <li>Navigate to backend: <code>cd backend</code></li>
+                <li>Start server: <code>python -m uvicorn app.main:app --host 0.0.0.0 --port 8000</code></li>
+                <li>Access API at: <a href="http://localhost:8000">http://localhost:8000</a></li>
+            </ol>
+        </div>
+
+        <h2>🌐 API Endpoints:</h2>
+        <div class="feature-item">
+            <span class="endpoint">GET /</span> - Root endpoint
+        </div>
+        <div class="feature-item">
+            <span class="endpoint">GET /health</span> - Health check
+        </div>
+        <div class="feature-item">
+            <span class="endpoint">POST /api/v1/detection/detect-deepfake</span> - Main detection
+        </div>
+        <div class="feature-item">
+            <span class="endpoint">POST /api/v1/detection/detect-video-deepfake</span> - Video-only detection
+        </div>
+        <div class="feature-item">
+            <span class="endpoint">POST /api/v1/detection/detect-audio-deepfake</span> - Audio-only detection
+        </div>
+        <div class="feature-item">
+            <span class="endpoint">POST /api/v1/detection/detect-face</span> - Face detection with margin
+        </div>
+
+        <h2>📈 Ensemble Scoring Formula:</h2>
+        <div class="feature-item">
+            <pre>final_confidence = (
+    0.5 * video_model_score +
+    0.3 * temporal_consistency_score +
+    0.2 * lipsync_score
+)</pre>
+        </div>
+
+        <h2>📊 Confidence Thresholds:</h2>
+        <ul class="feature-list">
+            <li class="feature-item"><strong>FAKE</strong> ≥ 0.65</li>
+            <li class="feature-item"><strong>SUSPICIOUS</strong> ≥ 0.40</li>
+            <li class="feature-item"><strong>REAL</strong> < 0.40</li>
+        </ul>
+
+        <div class="status-card">
+            <h3>🎉 Ready for Deployment!</h3>
+            <p>The TrueSight system is now ready to accurately detect deepfakes that were previously misclassified as REAL.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,607 @@
+--- PAGE 1 ---
+ 
+ 
+ 
+TrueSight : AI – Powered Spoofing Detection and Source 
+Identification System  
+ 
+ 
+ 
+Date : November 14, 2025  
+ 
+ 
+Group Members :  
+ 
+Aizaz ur Rehman 2022078  
+Asad Ali 2022903  
+M. Ammaid Saleem 2022344  
+Hamayun Nasir 2022189  
+ 
+ 
+ 
+ 
+Supervisor :  
+ 
+Dr. M. Zain Siddiqui  
+ 
+Co-Supervisor :  
+ 
+Dr. Khurram Khan Jadoon  
+ 
+                     
+ 
+ 
+ 
+  
+ 
+
+
+--- PAGE 2 ---
+TrueSight : AI – Powered Spoofing Detection and Source Identification System  
+ 
+Page | 2  
+ Revision History:  
+ 
+ 
+Revision History  Date  Comments  
+1.00   
+2.00   
+   
+ 
+Document Approval:  
+The following document has been accepted and approved by the following:  
+ 
+Signature  Date  Name  
+   
+   
+   
+ 
+  
+
+--- PAGE 3 ---
+TrueSight : AI – Powered Spoofing Detection and Source Identification System  
+ 
+Page | 3  
+ List  of Contents  
+LIST OF TABLES .............................................................................................................. ......... .......... . 4 
+1 INTRODUCTION  ................................ ................................ ..........................  5 
+   1.1.     Problem Statement……………………………………………………………      5  
+1.2. PURPOSE  ................................ ................................ ................................ .........  5 
+1.3. PRODUCT  SCOPE  ................................ ................................ ...........................  5 
+2 OVERVIEW ................................ ................................ ................................ ... 7 
+2.1 THE  OVERALL  DESCRIPTION ................................ ................................ ..... 7 
+2.2 PRODUCT  PERSPECTIVE  ................................ ................................ .............  7 
+2.3. PRODUCT  FUNCTIONS  ................................ ................................ .................  7 
+2.4. USER  CHARACTERISTICS  ................................ ................................ ...........  8 
+ CONSTRAINTS  ................................ ................................ ................................  8 
+ ASSUMPTIONS  AND  DEPENDENCIES  ................................ ......................  8 
+3 STATE OF THE ART  ................................ ................................ ....................  9 
+4 USER/SYSTEM REQUIREMENTS  ................................ .............................  10 
+4.1 EXTERNAL INTERFACE REQUIREMENTS  ................................ ...........................  10 
+4.1.1  User Interfaces  ................................ ................................ ........................  10 
+4.1.2  Hardware Interfaces  ................................ ................................ ...............  10 
+4.1.3  Software Interfaces  ................................ ................................ .................  10 
+4.1.4  Communication Interfaces  ................................ ................................ ..... 10 
+5 FUNCTIONAL REQUIREMENTS  ................................ ..............................  11 
+5.1 FUNCTIONAL REQUIREMENTS WITH TRACEABILITY INFORMATION  .................  11 
+6 NONFUNCTIONAL REQUIREMENTS & SOFTWARE SYSTEM 
+ATTRIBUTES  ................................ ................................ ................................ .... 30 
+6.1 PERFORMANCE REQUIREMENTS  ................................ ................................ ....... 31 
+7 PROJECT DESIGN/ARCHITECTURE  ................................ ......................  32 
+ 
+List  of Figures  
+ 
+Figure 1 use cases  ................................ ................................ ................................ .............................  31 
+Figure 2 Logical View  ................................ ................................ ................................ .......................  32 
+Figure 3 Developmental View ................................ ................................ ................................ ...........  32 
+Figure 4 Process View  ................................ ................................ ................................ .......................  32 
+Figure 5 Physical View  ................................ ................................ ................................ .....................  33 
+Figure 6 State Time Diagram  ................................ ................................ ................................ ...........  33 
+Figure 7 ER Diagram  ................................ ................................ ................................ ........................  33 
+Figure 8 Activity Diagram  ................................ ................................ ................................ ................  34 
+Figure 9 User Interface Design ................................ ................................ ................................ ........  35 
+
+--- PAGE 4 ---
+TrueSight : AI – Powered Spoofing Detection and Source Identification System  
+ 
+Page | 4  
+  
+ 
+List of Tables  
+ 
+Table 1: Terms used in this document and their description...................... ...........06  
+Table 2: Table for Functional Requirement 1 .........................................................13  
+Table 3: Table for Functional Requirement 2...............................................….......14  
+Table 4: Table for Functional Requirement 3 .........................................................1 5 
+Table 5: Table for Functional Requirement 4..........................................................1 6 
+Table 6: Table for Functional Requirement 5..........................................................1 7 
+Table 7: Table for Functional Requirement 6..........................................................1 8 
+Table 8: Table for Functional Requirement 7..........................................................1 9 
+Table 9: Table for Functional Requirement 8.......................................................... 20 
+Table 10: Table for Functional Requirement 9........................................................ 21 
+Table 11: Table for Functional Requirement 10...................................................... 22 
+Table 12: Table for Functional Requirement 11...................................................... 23 
+Table 13: Table for Functional Requirement 12...................................................... 24 
+Table 14: Table for Functional Requirement 13...................................................... 25 
+Table 15: Table for Functional Requirement 14...................................................... 26 
+Table 16: Table for Functional Requirement 15...................................................... 27 
+Table 17: Table for Functional Requirement 16...................................................... 28 
+Table 17: Table for Functional Requirement 16......................................................29  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+--- PAGE 5 ---
+TrueSight : AI – Powered Spoofing Detection and Source Identification System  
+ 
+Page | 5  
+ 1 INTRODUCTION  
+The emergence of sophisticated deepfake technologies, fueled by generative adversarial networks 
+(GANs), diffusion models, and voice cloning algorithms, has fundamentally escalated the vulnerability 
+landscape for biometric authentication mechanisms. These advancements enable highly effective 
+Presentation Attacks ( PAs) across real -time digital communication platforms, including video calls, 
+Voice over IP ( VoIP ), and messaging applications. Traditional unimodal authentication systems are 
+demonstrably susceptible to dynamic deepfakes and replay attacks , necessitating the implementation of 
+advanced multi -modal counter -measures.  
+The TrueSight: AI -Powered Spoofing Detection and Source Identification System  addresses this critical 
+security gap by proposing an AI -driven, multi -modal verification framework to ensure user authenticity 
+and forensic traceability. The proposed system concurrently analyzes facial video, audio, and textual 
+input streams to detect synthetic media with high precision.  
+1.1. Problem Statement  
+The rapid evolution of deepfake methodologies constitutes a dynamic attack vector compromising 
+biometric authentication within synchronous communication channels, notably Video -over-IP. 
+Traditional defenses are increasingly rendered obsolete by cross -modal synthesis, thereby exposing 
+high-assurance domains  such as digital banking and law enforcement  to real -time identity spoofing. 
+This vulnerability is compounded by significant deficits in forensic attribution and behavioral analytics, 
+particularly within underrepresented linguistic landscapes like Urdu, which exacerbates regional 
+security risks. Consequently, addressing these systemic gaps necessitates the immediate deployment of 
+a scalable, multi -modal architecture that leverages zero -trust protocols and immutable audit trails to 
+guarantee authentication integrity and content traceability in modern telecommunications.  
+1.2. Purpose  
+This document serves as the Software Requirements Specification (SRS) for the TrueSight: AI -Powered 
+Spoofing Detection and Source Identification System . The objective is to formally delineate the 
+verifiable functional, performance, and interface requirements that shall govern the system's design, 
+development, and validation phases. This specification provides the foundational technical contract for 
+the implementation team  and ensures the resultant system, upon completion, satisfies the mandated 
+security objectives and compliance guidelines, specifically aligning with international biometric 
+standards. The primary readership includes the system development and quality assurance teams, 
+technical management, and the final project evaluation panel.  
+ 
+1.3. Product Scope  
+The TrueSight system is defined as a dedicated, real -time, deep learning -based verification framework 
+instantiated for the detection and mitigation of deepfake spoofing attacks in live communication 
+services. The core scope mandates the integration of:  
+• Multi -Modal Analysis:  Utilizing CNNs for lip -sync desynchronization detection and facial 
+liveness detection using pseudo -depth supervision.  
+• Linguistic Specialization:  Incorporating Urdu -specific audio processing and prosodic voice 
+analysis for verification in multilingual contexts.  
+• Forensic Source Attribution:  Implementing a module to analyze metadata (e.g., EXIF data, 
+sensor noise), compression artifacts, generative model fingerprints, and user behavioral cues.  
+• Cybersecurity Enhancements:  Integrating AI -driven anomaly detection, Multi -Factor 
+Authentication (MFA) using behavioral biometrics, and a zero -trust security architecture.  
+
+--- PAGE 6 ---
+TrueSight : AI – Powered Spoofing Detection and Source Identification System  
+ 
+Page | 6  
+ • Digital Forensics Traceability:  Ensuring accountability via blockchain -based tamper -proof 
+logging and digital watermarking.  
+The system is delivered with a web -based interface for real -time monitoring and evidence logging. The 
+final construct is explicitly designed to be modular, scalable, and adaptable to evolving deepfake 
+generation techniques.  
+ 
+ 
+Name  Description  
+Deepfake  Synthetic media generated using generative AI models (e.g., GANs, diffusion 
+models) to create highly realistic and manipulative audio, video, or text 
+content.  
+ 
+Presentation Attack (PA)  An attempt to subvert a biometric verification system by presenting a 
+counterfeit or synthetically manipulated artifact (e.g., deepfake video or 
+cloned voice) to impersonate a legitimate user.  
+Multi -Modal Verification  A process that integrates and analyzes simultaneous data streams from 
+multiple sensory modalities (e.g., facial video, audio, text) to enhance system 
+robustness and detection precision against cross -modal attacks.  
+Zero-Trust Architecture  A security concept based on the principle of "never trust, always verify," 
+requiring strict identity verification for every user and device attempting to 
+access resources on the network, regardless of location.  
+Behavioral Biometrics  Measurement and analysis of unique behavioral traits (e.g., keystroke 
+dynamics, voice stress, interaction cadence) used for continuous user 
+authentication and anomaly detection.  
+Forensic Attribution  The process of tracing the origin or source of manipulated content, often 
+involving the examination of residual artifacts, embedded fingerprints, and 
+metadata.  
+Metadata  Descriptive information embedded within a file or system context, such as 
+EXIF data, timestamps, compression artifacts, or codec -specific fingerprints, 
+used to identify anomalies or trace content source.  
+CNN  Convolutional Neural Networks (CNNs) used for spatial feature extraction 
+(e.g., facial cues)  
+Prosodic Analysis  The study of speech features such as pitch, rhythm, stress, and intonation, 
+utilized in this system for detecting artificial patterns indicative of AI -cloned 
+voices.  
+Blockchain Logging  The use of a decentralized, immutable digital ledger (blockchain) to record 
+authentication events, forensic evidence, and system logs, ensuring tamper -
+proof integrity and legal accountability.  
+ 
+Table 1: Terms used and their description  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+--- PAGE 7 ---
+TrueSight : AI – Powered Spoofing Detection and Source Identification System  
+ 
+Page | 7  
+ 2 OVERVIEW  
+ 
+2.1. The Overall Description  
+ 
+The TrueSight  system is conceptualized as an advanced, real -time, AI -driven solution designed to 
+counter deepfake -based spoofing attacks across live communication services, encompassing video calls, 
+VoIP platforms, and messaging systems. It mandates a multi -modal analysis approach, integrating 
+facial video, audio, and textual input for robust user verification. Beyond simple detection, the system 
+incorporates advanced forensic and cybersecurity protocols to ensure end -to-end data integrity, 
+traceability, and accountability. This framework fundamentally addresses the escalating threat posed by 
+dynamic and cross -modal deepfakes, which render existing unimodal authentication mechanisms 
+ineffective.  
+ 
+2.2. Product Perspective  
+ 
+The TrueSight  system functions as a critical component  integrated within a larger ecosystem of real -
+time digital communication platforms. It does not operate as a standalone application but rather as a 
+highly specialized security layer responsible for processing, analyzing, and verifying identity streams 
+passed from the host communication service.  
+ 
+The system's operational scope requires strict adherence to, and interaction with, several external 
+interfaces:  
+• System Interfaces (Communication Platform):  The system must receive synchronized, real -
+time facial video, audio, and potentially text data streams from external VoIP or video call 
+platforms.  
+• Software Interfaces:  The system relies on underlying operating systems and specialized 
+libraries for deep learning inference (e.g., CNNs). It also requires interfaces for logging to an 
+external blockchain -based ledger . 
+• User Interfaces:  A dedicated web-based interface  is required for real -time monitoring of 
+authentication events, configuration management, and the review/analysis of logged forensic 
+evidence.  
+• Communication Interfaces:  The system must handle high -volume, low -latency data streams 
+characteristic of real -time communications for effective spoofing detection.  
+ 
+2.3. Product Functions  
+ 
+The core functionality of the TrueSight system is defined by its seven explicit project objectives, which 
+collectively mandate a spectrum of detection, defense, and forensic capabilities:  
+ 
+• Multi -Modal Verification:  The system shall execute simultaneous and synchronized analysis 
+of facial, audio, and text input streams to prevent deepfake -based identity spoofing.  
+• Deep Learning Inference:  It shall employ Convolutional Neural Networks (CNNs) for facial 
+liveness detection, encompassing lip -sync desynchronization and analysis of irregular facial 
+depth patterns.  
+• Localized Linguistic Analysis:  The system shall incorporate Urdu -specific audio processing  
+and multilingual voice analysis to ensure reliable detection in linguistically diverse contexts.  
+• Forensic Source Attribution:  It shall implement a dedicated module for analyzing metadata 
+(e.g., EXIF data, sensor noise, codec fingerprints) and user behavioral patterns to identify the 
+origin of manipulated content.  
+
+--- PAGE 8 ---
+TrueSight : AI – Powered Spoofing Detection and Source Identification System  
+ 
+Page | 8  
+ • Security Enforcement:  The system shall integrate AI-based anomaly detection  and Multi -
+Factor Authentication (MFA) utilizing behavioral biometrics  (e.g., keystroke dynamics, voice 
+stress).  
+• Zero -Trust Protocol Implementation:  A Zero -Trust security architecture shall be enforced to 
+protect all communication pipelines.  
+ 
+2.4. User Characteristics  
+ 
+The system is designed for two primary classes of users, each possessing distinct technical profiles and 
+operational needs:  
+ 
+• End-Users (Authenticated Users):  These are individuals interacting with the underlying 
+communication platform who are subject to verification. Their characteristic is generally non -
+technical , with their interaction limited to providing valid biometric input during the 
+authentication process.  
+• Technical/Operational Stakeholders (Forensic Analysts, System Administrators):   
+ 
+These users require a high degree of technical expertise. They are responsible for:  
+ 
+o Configuration and management of the detection thresholds and security policies . 
+o Real-time monitoring of authentication events and anomalies via the web interface.  
+o Conducting post -incident digital forensic investigations and accessing the tamper -proof 
+logs.  
+ 
+2.5. Constraints  
+ 
+The design and development of the TrueSight  system are subject to explicit constraints arising from its 
+high-security and real -time nature:  
+• Performance Constraints:  The system must operate in real-time, necessitating extremely low 
+processing latency to prevent authentication delays in live communication services.  
+• Technological Constraints (Methodology):  The core detection logic is constrained to utilize 
+deep learning paradigms, specifically incorporating CNN models.  
+• Security and Architectural Constraints:  The system shall  be implemented adhering to a 
+Zero -Trust security architecture  and integrate MFA protocols.  
+• Standards Compliance Constraints:  The final solution must comply with relevant 
+international biometric authentication standards, specifically the requirements for Presentation 
+Attack Detection (e.g., ISO/IEC DIS 30107 -3:2017 ). 
+• Data Integrity Constraints:  Forensic logging mechanisms are constrained to ensure tamper -
+proof integrity  through the use of blockchain technology.  
+ 
+2.6. Assumptions and Dependencies  
+ 
+The viability and functionality of the TrueSight  system rely on a foundational set of assumptions 
+regarding the operating environment and external systems:  
+• Input Data Dependency:  It is assumed that the external communication platforms 
+(VoIP/Video Call) can provide raw, synchronized, high -fidelity audio and video streams  to the 
+TrueSight core processing engine without significant pre -processing or degradation . 
+• Behavioral Biometrics Dependency:  The effectiveness of behavioral biometrics (e.g., 
+keystroke dynamics, voice stress) is dependent upon the presence of compatible sensors or 
+input mechanisms available on the end -user device.  
+
+--- PAGE 9 ---
+Traceback (most recent call last):
+  File "<string>", line 6, in <module>
+  File "C:\Users\buxr1\AppData\Local\Programs\Python\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u27a2' in position 137: character maps to <undefined>
+TrueSight : AI – Powered Spoofing Detection and Source Identification System  
+ 
+Page | 9  
+ • Blockchain Infrastructure Dependency:  It is assumed that a stable and available 
+blockchain infrastructure  will be accessible to the system for the continuous, tamper -proof 
+logging of forensic evidence.  
+• Evolving Threat Assumption:  It is assumed that while deepfake technologies will continue to 
+evolve, the system's modular  design and use of AI-driven anomaly detection  will allow for 
+scalable and adaptive updates to maintain detection efficacy . 
+ 
+ 
+3 STATE OF THE ART  
+ 
+3.1. Literature Review  
+ 
+Contemporary research in digital media forensics and biometric security emphasizes the critical 
+need for advanced Presentation Attack Detection (PAD) mechanisms, largely in response to the 
+proliferation of deepfake content generated by sophisticated deep learning models (GANs, 
+diffusion models). The literature advocates a shift from traditional unimodal authentication 
+methods (e.g., singular facial or voice recognition) towards a multi -modal verification 
+framework  for enhanced resilience against dynamic, cross -modal spoofing.  
+ 
+Key areas of focus, reflected in this system's design, include:  
+ 
+• Liveness Detection:  Deep learning techniques, particularly CNNs with pixel -wise supervision , 
+are explored to detect anomalies such as lip -sync mismatches, irregular facial depth, and texture 
+artifacts.  
+• Source Attribution:  The field stresses the integration of advanced digital forensic methods to 
+examine underlying media characteristics, including metadata  (EXIF, sensor noise, 
+compression artifacts) and generative model fingerprints , to trace the content's origin.  
+• Acoustic Features:  Recent work highlights the importance of prosodic voice analysis  for 
+real/fake voice classification, alongside the necessity for cross -lingual detection techniques  to 
+serve low -resource and multilingual environments.  
+• Cybersecurity Integration:  The literature increasingly supports embedding robust 
+cybersecurity enhancements such as AI-powered anomaly detection, Multi -Factor 
+Authentication (MFA)  utilizing behavioral biometrics , and implementation of a zero-trust 
+security architecture  to secure data integrity and communication pipelines.  
+• Accountability and Traceability:  Mechanisms ensuring tamper -proof evidence logging, 
+specifically referencing blockchain -based logging  and digital Signature , are cited as essential 
+for post -incident analysis and legal compliance.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+--- PAGE 10 ---
+TrueSight : AI – Powered Spoofing Detection and Source Identification System  
+ 
+Page | 10  
+ 3.2. Existing Systems  
+ 
+Analysis of existing systems reveals their principal limitations against the complexity of 
+modern deepfake threats, providing the direct justification for the proposed TrueSight  solution.  
+ 
+Existing System 
+Category  Features & 
+Current State  Identified Weaknesses (Gaps)  TrueSight's Response to 
+Weaknesses  
+Liveness Face 
+Detection   Employs facial 
+motion, depth 
+estimation, and 
+texture analysis for 
+static attack 
+detection in live 
+calls.  Critically ineffective against 
+dynamic deepfakes . Lacks 
+advanced metadata forensics 
+(e.g., codec fingerprints, sensor 
+noise) . Insufficiently integrated 
+with robust cybersecurity 
+protocols (MFA, zero -trust).  Integrates pixel -wise pseudo depth 
+labels  and saliency maps . Implements 
+advanced metadata analysis  (EXIF, 
+sensor noise, compression artifacts) . 
+Deploys AI -driven anomaly detection, 
+behavioral biometrics via MFA, and a 
+zero-trust architecture . 
+Voice 
+Authentication   Uses voice 
+biometrics, spectral 
+analysis, and 
+phoneme 
+recognition . Relies 
+minimally on 
+metadata usage.  Highly vulnerable to AI-cloned 
+voices . Deficient in cross -modal 
+validation  (i.e., correlating voice 
+with lip movements) . Lacks 
+Urdu -specific detection  models . 
+Absence of advanced metadata 
+forensics and robust 
+cybersecurity layers.  Adds lip-sync verification  and 
+specialized Urdu -specific linguistic 
+analysis . Incorporates prosodic 
+analysis  for precise real/fake voice 
+classification . Integrates advanced 
+metadata forensics  and the full suite 
+of cybersecurity protocols (MFA, 
+behavioral biometrics, blockchain 
+logging).  
+ 
+ 
+4 USER /SYSTEM  REQUIREMENTS  
+ 
+ 
+4.1. External Interface Requirements  
+ 
+This subsection delineates the necessary external system, hardware, software, and communication 
+interfaces required for the effective deployment and continuous operation of the TrueSight  system 
+within the context of live digital communication platforms.  
+ 
+4.1.1. User Interfaces  
+ 
+The User Interface (UI) component shall be implemented as a dedicated web-based interface . This 
+interface is mandatory for operational stakeholders and must provide distinct functionalities for system 
+observability and forensic accountability : 
+ 
+• Real -Time Monitoring:  The interface shall provide continuous display and monitoring of all 
+active authentication events.  
+• Forensic Access:  It must facilitate the review and analysis of all detected anomalies and 
+forensic evidence, utilizing the outputs from the tamper -proof logging mechanisms.  
+• Configuration (Derived):  The interface must allow technical personnel to configure policies, 
+such as Multi -Factor Authentication (MFA) parameters and detection thresholds.  
+ 
+ 
+ 
+
+--- PAGE 11 ---
+TrueSight : AI – Powered Spoofing Detection and Source Identification System  
+ 
+Page | 11  
+ 4.1.2. Hardware Interfaces  
+ 
+The system's reliance on computationally intensive deep learning models (CNNs and RNNs) imposes 
+specific requirements on the execution hardware:  
+ 
+• High -Performance Processing:  The infrastructure must support real -time deep learning 
+inference, specifically accommodating the simultaneous execution of multi -modal data fusion 
+and analysis at low latency.  
+• Resource Allocation:  Hardware resources must be adequate to maintain the integrity of the 
+integrated zero-trust security architecture  and manage the data throughput associated with live 
+communication streams.  
+ 
+4.1.3. Software Interfaces  
+ 
+The TrueSight  system is functionally dependent on programmatic interfaces with the following external 
+software components and standards:  
+ 
+• Host Communication Platforms:  Interfaces are mandatory for receiving synchronized, high -
+fidelity facial video, audio, and textual input streams  from external VoIP or video call services.  
+• Deep Learning Engines:  Interfaces must be established for seamless execution and control of 
+the system's core deep learning modules, including CNNs.  
+• Forensic Ledger Interface:  A dedicated software connection is required to facilitate the 
+continuous, tamper -proof logging of forensic evidence onto the designated blockchain -based 
+ledger.  
+• Security & Biometrics:  Interoperability is required with modules enforcing MFA and 
+behavioral biometrics (e.g., keystroke dynamics, voice stress analysis).  
+ 
+4.1.4. Communication Interfaces  
+ 
+The communication interfaces must be engineered to handle the technical parameters of real -time 
+operation and high -security data transfer:  
+ 
+• High -Throughput, Synchronous Data:  The interfaces must reliably manage high -volume, 
+low-latency transmission of synchronous video and audio data streams, which are critical for 
+temporal analysis (e.g., lip -sync detection).  
+• Protocol Security:  All data transmission across the network interfaces must adhere to and be 
+protected by the implemented zero-trust security protocols  and supporting advanced 
+cybersecurity mechanisms.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+--- PAGE 12 ---
+TrueSight : AI – Powered Spoofing Detection and Source Identification System  
+ 
+Page | 12  
+ 5 Functional Requirements  
+ 
+5.1 Functional Requirements  
+5.1.1 Core Detection & Analysis  : 
+o Multi -Modal Stream Processing  
+o Lip-Sync Discrepancy Detection (CNN Execution)  
+o Facial Spoofing Cues Detection (Deep Learning Execution)  
+o Synthetic Audio Patterns Detection (Deep Learning Execution)  
+o Urdu -Specific Audio Processing  
+o Multilingual Voice Analysis  
+ 
+5.1.2 Forensic Source Identification  
+o Metadata Forensic Examination  
+o Compression Artifacts Forensic Examination  
+o Sensor Noise Forensic Examination  
+o Behavioral Patterns Analysis (Cadence/Interaction)  
+o Generative Model Fingerprints Forensic Attribution  
+ 
+5.1.3 Security, Traceability, & Infrastructure  
+ 
+o AI-Powered Anomaly Detection  
+o Tamper -Proof Logging (Blockchain Implementation)  
+o Forensic Watermarking Application  
+o Real-Time Authentication Event Monitoring (Web Interface)  
+o Forensic Evidence Log Review (Web Interface)  
+o System Functionality Adaptation (Modularity)  
+ 
+ 
+5.2 Functional Requirements with Traceability information  
+Field  Assignment 
+Format/Value  Technical Significance  
+Requirement ID  FR-[Category] -
+[Number] (e.g., FR -
+DA-01) Provides a unique identifier for Forward 
+Traceability to design, test cases, and source 
+code modules.  
+Use Case #  UC-[Number] (e.g., 
+UC-01, UC -03) Links the functional requirement to a specific 
+end-user interaction or system scenario.  
+Parent Requirement #  O-[Number] (e.g., 
+O-2, O-6) Provides the Backward Traceability link to the 
+originating high -level system objective outlined 
+in the project scope.  
+ 
+ 
+
+--- PAGE 13 ---
