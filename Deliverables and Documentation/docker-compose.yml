@@ -1,0 +1,208 @@
+version: '3.8'
+
+services:
+  # Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: truesight-postgres
+    environment:
+      POSTGRES_DB: truesight_db
+      POSTGRES_USER: truesight_user
+      POSTGRES_PASSWORD: truesight_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U truesight_user -d truesight_db"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Redis for caching and session storage
+  redis:
+    image: redis:7-alpine
+    container_name: truesight-redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Service Registry
+  service-registry:
+    build:
+      context: .
+      dockerfile: microservices/service_registry.Dockerfile
+    container_name: truesight-registry
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql://truesight_user:truesight_password@postgres:5432/truesight_db
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Authentication Service
+  auth-service:
+    build:
+      context: .
+      dockerfile: microservices/auth/Dockerfile
+    container_name: truesight-auth
+    ports:
+      - "8004:8004"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      service-registry:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql://truesight_user:truesight_password@postgres:5432/truesight_db
+      - SERVICE_REGISTRY_URL=http://service-registry:8000
+      - JWT_SECRET=your-super-secret-jwt-key-change-in-production
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8004/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Detection Service
+  detection-service:
+    build:
+      context: .
+      dockerfile: microservices/detection/Dockerfile
+    container_name: truesight-detection
+    ports:
+      - "8001:8001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      auth-service:
+        condition: service_healthy
+      service-registry:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql://truesight_user:truesight_password@postgres:5432/truesight_db
+      - SERVICE_REGISTRY_URL=http://service-registry:8000
+      - AUTH_SERVICE_URL=http://auth-service:8004
+    volumes:
+      - ./data/uploads:/app/data/uploads
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Forensic Service
+  forensic-service:
+    build:
+      context: .
+      dockerfile: microservices/forensic/Dockerfile
+    container_name: truesight-forensic
+    ports:
+      - "8002:8002"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      auth-service:
+        condition: service_healthy
+      service-registry:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql://truesight_user:truesight_password@postgres:5432/truesight_db
+      - SERVICE_REGISTRY_URL=http://service-registry:8000
+      - AUTH_SERVICE_URL=http://auth-service:8004
+    volumes:
+      - ./data/uploads:/app/data/uploads
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Blockchain Service
+  blockchain-service:
+    build:
+      context: .
+      dockerfile: microservices/blockchain/Dockerfile
+    container_name: truesight-blockchain
+    ports:
+      - "8003:8003"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      auth-service:
+        condition: service_healthy
+      service-registry:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql://truesight_user:truesight_password@postgres:5432/truesight_db
+      - SERVICE_REGISTRY_URL=http://service-registry:8000
+      - AUTH_SERVICE_URL=http://auth-service:8004
+      - ETHEREUM_RPC_URL=https://mainnet.infura.io/v3/YOUR_INFURA_KEY
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # API Gateway
+  api-gateway:
+    build:
+      context: .
+      dockerfile: microservices/gateway/Dockerfile
+    container_name: truesight-gateway
+    ports:
+      - "8000:8000"
+    depends_on:
+      auth-service:
+        condition: service_healthy
+      detection-service:
+        condition: service_healthy
+      forensic-service:
+        condition: service_healthy
+      blockchain-service:
+        condition: service_healthy
+      service-registry:
+        condition: service_healthy
+    environment:
+      - AUTH_SERVICE_URL=http://auth-service:8004
+      - DETECTION_SERVICE_URL=http://detection-service:8001
+      - FORENSIC_SERVICE_URL=http://forensic-service:8002
+      - BLOCKCHAIN_SERVICE_URL=http://blockchain-service:8003
+      - SERVICE_REGISTRY_URL=http://service-registry:8000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: truesight-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      api-gateway:
+        condition: service_healthy
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  postgres_data:

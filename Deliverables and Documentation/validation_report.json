@@ -1,0 +1,180 @@
+{
+  "timestamp": "2026-02-19T03:06:22.474651",
+  "summary": {
+    "total_tests": 29,
+    "passed": 22,
+    "failed": 7,
+    "warnings": 0,
+    "success_rate": 75.86206896551724
+  },
+  "detailed_results": {
+    "module_tests": [
+      {
+        "module": "Stream Processing",
+        "status": "PASS",
+        "details": "Import successful"
+      },
+      {
+        "module": "Video Detection",
+        "status": "PASS",
+        "details": "Import successful"
+      },
+      {
+        "module": "Audio Detection",
+        "status": "PASS",
+        "details": "Import successful"
+      },
+      {
+        "module": "Urdu Detection",
+        "status": "PASS",
+        "details": "Import successful"
+      },
+      {
+        "module": "Forensic Analysis",
+        "status": "PASS",
+        "details": "Import successful"
+      },
+      {
+        "module": "Security & MFA",
+        "status": "PASS",
+        "details": "Import successful"
+      },
+      {
+        "module": "Behavioral Biometrics",
+        "status": "PASS",
+        "details": "Import successful"
+      },
+      {
+        "module": "Blockchain",
+        "status": "PASS",
+        "details": "Import successful"
+      },
+      {
+        "module": "Watermarking",
+        "status": "PASS",
+        "details": "Import successful"
+      },
+      {
+        "module": "API Layer",
+        "status": "PASS",
+        "details": "Import successful"
+      }
+    ],
+    "version_tests": [
+      {
+        "package": "torch",
+        "required": "2.2.2",
+        "installed": "2.9.1",
+        "status": "FAIL"
+      },
+      {
+        "package": "torchvision",
+        "required": "0.17.2",
+        "installed": "0.24.1",
+        "status": "FAIL"
+      },
+      {
+        "package": "torchaudio",
+        "required": "2.2.2",
+        "installed": "2.9.1",
+        "status": "FAIL"
+      },
+      {
+        "package": "transformers",
+        "required": "4.36.2",
+        "installed": "4.57.3",
+        "status": "FAIL"
+      },
+      {
+        "package": "peft",
+        "required": "0.7.1",
+        "installed": "0.18.1",
+        "status": "FAIL"
+      },
+      {
+        "package": "fastapi",
+        "required": "0.104.1",
+        "installed": "0.123.0",
+        "status": "FAIL"
+      },
+      {
+        "package": "sqlalchemy",
+        "required": "2.0.23",
+        "installed": "2.0.44",
+        "status": "FAIL"
+      }
+    ],
+    "security_tests": [
+      {
+        "test": "Zero-Trust Manager",
+        "status": "PASS",
+        "details": "Class ZeroTrustSecurityManager found"
+      },
+      {
+        "test": "Behavioral Biometrics",
+        "status": "PASS",
+        "details": "Class BehavioralBiometricsEngine found"
+      },
+      {
+        "test": "Authentication Service",
+        "status": "PASS",
+        "details": "Class ZeroTrustAuthService found"
+      },
+      {
+        "test": "RBAC System",
+        "status": "PASS",
+        "details": "Class RBACService found"
+      }
+    ],
+    "integration_tests": [
+      {
+        "test": "FastAPI Application",
+        "status": "PASS",
+        "details": "API app created successfully"
+      },
+      {
+        "test": "Database Connection",
+        "status": "PASS",
+        "details": "Database module imported"
+      }
+    ],
+    "frontend_tests": [
+      {
+        "component": "React App",
+        "file_path": "frontend/src/index.js",
+        "status": "PASS",
+        "details": "File exists"
+      },
+      {
+        "component": "Dashboard Component",
+        "file_path": "frontend/src/components/Dashboard.js",
+        "status": "PASS",
+        "details": "File exists"
+      },
+      {
+        "component": "Dashboard Styles",
+        "file_path": "frontend/src/components/Dashboard.css",
+        "status": "PASS",
+        "details": "File exists"
+      },
+      {
+        "component": "Global Styles",
+        "file_path": "frontend/src/index.css",
+        "status": "PASS",
+        "details": "File exists"
+      },
+      {
+        "component": "Package.json",
+        "file_path": "frontend/package.json",
+        "status": "PASS",
+        "details": "File exists"
+      },
+      {
+        "component": "HTML Template",
+        "file_path": "frontend/index.html",
+        "status": "PASS",
+        "details": "File exists"
+      }
+    ]
+  }
+}
